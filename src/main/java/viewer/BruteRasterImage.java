@@ -17,25 +17,25 @@ public class BruteRasterImage implements Image {
         this.height = height;
         createRepresentation();
 
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                pixels[i][j] = color;
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                pixels[j][i] = color;
             }
         }
     }
 
     public BruteRasterImage(Color[][] colors){
-        this.width =getRowCount(colors);
-        this.height =getColumnCount(colors) ;
+        this.width =getColumnCount(colors);
+        this.height = getRowCount(colors);
 
         requiresNonNull(colors);
         requiresNonZeroDimensions(colors);
         requiresRectangularMatrix(colors);
 
         createRepresentation();
-        for (int i = 0; i < getRowCount(colors); i++) {
-            for (int j = 0; j < getColumnCount(colors); j++) {
-                pixels[i][j] = colors[i][j];
+        for (int i = 0; i < this.width; i++) {
+            for (int j = 0; j < this.height; j++) {
+                pixels[j][i] = colors[j][i];
             }
         }
     }
@@ -47,27 +47,27 @@ public class BruteRasterImage implements Image {
 
     @Override
     public Color getPixelColor(int x, int y) {
-        return this.pixels[x][y];
+        return this.pixels[y][x];
     }
 
     @Override
     public int getWidth() {
-        return getRowCount(this.pixels);
+        return getColumnCount(this.pixels);
     }
 
     @Override
     public int getHeight() {
-        return getColumnCount(this.pixels);
+        return getRowCount(this.pixels);
     }
 
     public void setPixelColor(Color color, int x, int y){
-        this.pixels[x][y]=color;
+        this.pixels[y][x]=color;
     }
 
     private void setPixelsColor(Color color) {
         for (int i = 0; i < getRowCount(this.pixels); i++) {
             for (int j = 0; j < getColumnCount(this.pixels); j++) {
-                pixels[i][j] = color;
+                pixels[j][i] = color;
             }
         }
     }

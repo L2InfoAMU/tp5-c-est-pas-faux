@@ -1,5 +1,7 @@
-package image;
+package viewer;
 
+import image.Image;
+import image.ImageFactory;
 import javafx.scene.paint.Color;
 import viewer.*;
 

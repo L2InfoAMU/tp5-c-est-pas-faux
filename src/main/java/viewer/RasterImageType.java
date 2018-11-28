@@ -1,4 +1,3 @@
 package viewer;
 
-public enum RasterImageType {BRUTE
-}
+public enum RasterImageType {BRUTE}

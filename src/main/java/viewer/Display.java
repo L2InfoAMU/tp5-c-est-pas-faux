@@ -25,7 +25,8 @@ public class Display implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         // TODO : rajouter la création d'une fabrique d'image pour initialiser imageFactory
-
+        imageFactory = new RasterUniformImageFactory(2000,
+                600, Color.RED, RasterImageType.BRUTE);
         this.image = imageFactory.makeImage();
 
         render();
@@ -42,7 +43,7 @@ public class Display implements Initializable {
         PixelWriter pixelWriter = graphicsContext.getPixelWriter();
 
         for (int i = 0; i < pixelWidth; i++) {
-            for (int j = 0; j < pixelHeight; j++) {
+            for (int j = 0; j <pixelHeight ; j++) {
                 renderPixel(i, j, pixelWriter);
             }
         }
