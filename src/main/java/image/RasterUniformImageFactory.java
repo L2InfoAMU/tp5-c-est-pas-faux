@@ -1,4 +1,4 @@
-package viewer;
+package image;
 
 import image.Image;
 import image.ImageFactory;

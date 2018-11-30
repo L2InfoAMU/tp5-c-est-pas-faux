@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 public class Pixel extends Point{
     private Color color;
 
-    Pixel(int x, int y, Color color) {
+    public Pixel(int x, int y, Color color) {
         super(x, y);
         this.color = color;
     }
