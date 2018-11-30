@@ -7,12 +7,10 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaletteRasterImage implements Image {
+public class PaletteRasterImage extends RasterImage implements Image {
 
-    public int width, height;
     List<Color> palette;
     int[][] indexesOfColors;
-
 
     public PaletteRasterImage(Color color, int width, int height) {
         this.width = width;
@@ -21,7 +19,6 @@ public class PaletteRasterImage implements Image {
         palette.add(color);
         indexesOfColors[height][width] = palette.indexOf(color);
     }
-
 
     public PaletteRasterImage(Color[][] pixels) {
         this.width = width;
@@ -36,19 +33,18 @@ public class PaletteRasterImage implements Image {
         }
     }
 
-
     public void createRepresentation(){
-        this.indexesOfColors=new int[height][width];
-        this.palette=new ArrayList<>();
+        this.indexesOfColors = new int[height][width];
+        this.palette = new ArrayList<>();
     }
 
     public void setPixelColor(Color color, int x, int y){
-        int index=palette.indexOf(color);
-        if(index==-1){
+        int index = palette.indexOf(color);
+        if(index == -1){
             palette.add(color);
             index=palette.size()-1;
         }
-        indexesOfColors[y][x]=index;
+        indexesOfColors[y][x] = index;
     }
 
     public Color getPixelColor(int x, int y){
@@ -64,27 +60,8 @@ public class PaletteRasterImage implements Image {
         palette.add(color);
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                indexesOfColors[j][i]=0;
+                indexesOfColors[j][i] = 0;
             }
         }
-    }
-
-
-    @Override
-    public int getWidth() {
-        return this.width;
-    }
-
-    @Override
-    public int getHeight() {
-        return this.height;
-    }
-
-    protected void setWidth(int width){
-        this.width=width;
-    }
-
-    protected void setHeight(int height){
-        this.height=height;
     }
 }
