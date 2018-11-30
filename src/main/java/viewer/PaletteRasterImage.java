@@ -14,10 +14,12 @@ public class PaletteRasterImage implements Image {
     int[][] indexesOfColors;
 
 
-    public PaletteRasterImage(int width, int height, List<Color> palette) {
+    public PaletteRasterImage(Color color, int width, int height) {
         this.width = width;
         this.height = height;
         this.palette = palette;
+        palette.add(color);
+        indexesOfColors[height][width] = palette.indexOf(color);
     }
 
 
