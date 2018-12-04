@@ -54,7 +54,7 @@ public class PaletteRasterImage extends RasterImage implements Image {
     public void setPixelsColor(Color[][] pixels){
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                setPixelColor(pixels[j][i]; );
+                setPixelsColor(pixels[j][i]);
             }
         }
     }
