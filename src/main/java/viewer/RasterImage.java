@@ -14,7 +14,6 @@ public abstract class RasterImage {
     protected void setWidth(int width){
         this.width=width;
     }
-
     protected void setHeight(int height){
         this.height=height;
     }
