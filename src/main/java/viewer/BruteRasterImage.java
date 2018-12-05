@@ -7,7 +7,6 @@ import static util.Matrices.*;
 
 public class BruteRasterImage extends RasterImage implements Image {
 
-
     Color[][] pixels;
 
     public BruteRasterImage(Color color, int width, int height) {
@@ -42,7 +41,6 @@ public class BruteRasterImage extends RasterImage implements Image {
         this.pixels = new Color[height][width];
     }
 
-
     @Override
     public Color getPixelColor(int x, int y) {
         return this.pixels[y][x];
@@ -51,8 +49,6 @@ public class BruteRasterImage extends RasterImage implements Image {
     public void setPixelColor(Color color, int x, int y){
         this.pixels[y][x] = color;
     }
-
-
 
     private void setPixelsColor(Color[][] pixels){
         for (int i = 0; i < getRowCount(this.pixels); i++) {

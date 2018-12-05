@@ -6,6 +6,7 @@ import javafx.scene.paint.Color;
  * Created by Arnaud Labourel on 09/11/2018.
  */
 public class Pixel extends Point{
+
     private Color color;
 
     public Pixel(int x, int y, Color color) {

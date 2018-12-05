@@ -19,7 +19,6 @@ public class PaletteRasterImage extends viewer.RasterImage implements Image {
         this.height = height;
         this.palette = palette;
         palette.add(color);
-        // indexesOfColors[height][width] = palette.indexOf(color);
     }
 
     public PaletteRasterImage(Color[][] pixels) {
