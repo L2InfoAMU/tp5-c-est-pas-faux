@@ -1,13 +1,15 @@
 package viewer;
 
 import image.Image;
-import image.Pixel;
-import static util.Matrices.*;
 import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaletteRasterImage extends RasterImage implements Image {
+import static util.Matrices.getColumnCount;
+import static util.Matrices.getRowCount;
+
+public class PaletteRasterImage extends viewer.RasterImage implements Image {
 
     List<Color> palette;
     int[][] indexesOfColors;
@@ -17,15 +19,15 @@ public class PaletteRasterImage extends RasterImage implements Image {
         this.height = height;
         this.palette = palette;
         palette.add(color);
-        indexesOfColors[height][width] = palette.indexOf(color);
+        // indexesOfColors[height][width] = palette.indexOf(color);
     }
 
     public PaletteRasterImage(Color[][] pixels) {
-        this.width = width;
-        this.height = height;
-        this.palette = palette;
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
+        this.width = getColumnCount(pixels);
+        this.height = getRowCount(pixels);
+        createRepresentation();
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
                 if(!palette.contains(pixels[j][i]))
                     palette.add(pixels[j][i]);
                 indexesOfColors[j][i] = palette.indexOf(pixels[j][i]);
@@ -47,14 +49,13 @@ public class PaletteRasterImage extends RasterImage implements Image {
         indexesOfColors[y][x] = index;
     }
 
-    public Color getPixelColor(int x, int y){
-        return palette.get(indexesOfColors[y][x]);
-    }
-
     public void setPixelsColor(Color[][] pixels){
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                setPixelsColor(pixels[j][i]);
+        setWidth(getColumnCount(pixels));
+        setHeight(getRowCount(pixels));
+        createRepresentation();
+        for(int i=0;i<getColumnCount(pixels);i++){
+            for(int j=0;j<getRowCount(pixels);j++){
+                setPixelColor(pixels[j][i],j,i);
             }
         }
     }
@@ -62,10 +63,15 @@ public class PaletteRasterImage extends RasterImage implements Image {
     private void setPixelsColor(Color color){
         this.palette.clear();
         palette.add(color);
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
                 indexesOfColors[j][i] = 0;
             }
         }
+    }
+
+    @Override
+    public Color getPixelColor(int x, int y) {
+        return palette.get(indexesOfColors[y][x]);
     }
 }

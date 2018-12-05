@@ -3,6 +3,7 @@ package image;
 import javafx.scene.paint.Color;
 import viewer.BruteRasterImage;
 import viewer.NotSupportedException;
+import viewer.PaletteRasterImage;
 import viewer.RasterImageType;
 
 public class RasterFlagFactory implements ImageFactory {
@@ -35,6 +36,8 @@ public class RasterFlagFactory implements ImageFactory {
         switch (rasterImageType){
             case BRUTE:
                 return new BruteRasterImage(colors);
+            case PALETTE:
+                return new PaletteRasterImage(colors);
             default:
                 throw new NotSupportedException(rasterImageType + " is not supported");
         }
