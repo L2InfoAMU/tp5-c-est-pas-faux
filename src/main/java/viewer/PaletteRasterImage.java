@@ -25,6 +25,7 @@ public class PaletteRasterImage extends viewer.RasterImage implements Image {
         this.width = getColumnCount(pixels);
         this.height = getRowCount(pixels);
         createRepresentation();
+
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 if(!palette.contains(pixels[j][i]))
@@ -43,18 +44,16 @@ public class PaletteRasterImage extends viewer.RasterImage implements Image {
         int index = palette.indexOf(color);
         if(index == -1){
             palette.add(color);
-            index=palette.size()-1;
+            index = palette.size()-1;
         }
         indexesOfColors[y][x] = index;
     }
 
     public void setPixelsColor(Color[][] pixels){
-        setWidth(getColumnCount(pixels));
-        setHeight(getRowCount(pixels));
-        createRepresentation();
-        for(int i=0;i<getColumnCount(pixels);i++){
-            for(int j=0;j<getRowCount(pixels);j++){
-                setPixelColor(pixels[j][i],j,i);
+
+        for(int i = 0; i < getColumnCount(pixels); i++){
+            for(int j = 0; j < getRowCount(pixels); j++){
+                setPixelColor(pixels[j][i], j, i);
             }
         }
     }
@@ -62,6 +61,7 @@ public class PaletteRasterImage extends viewer.RasterImage implements Image {
     private void setPixelsColor(Color color){
         this.palette.clear();
         palette.add(color);
+
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 indexesOfColors[j][i] = 0;

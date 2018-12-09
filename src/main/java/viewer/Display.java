@@ -24,13 +24,21 @@ public class Display implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        // TODO : rajouter la création d'une fabrique d'image pour initialiser imageFactory
-       /* imageFactory = new RasterUniformImageFactory(2000,
-                600, Color.RED, RasterImageType.BRUTE);
+        // initialisation de BRUTE
+        /*imageFactory = new RasterFlagFactory(900, 600,
+                Color.BLUE, Color.WHITE, Color.RED, RasterImageType.BRUTE);
         this.image = imageFactory.makeImage();*/
-        imageFactory = new RasterFlagFactory(900, 600,
+
+        // initialisation de PALETTE
+        /*imageFactory = new RasterFlagFactory(900, 600,
                 Color.BLUE, Color.WHITE, Color.RED, RasterImageType.PALETTE);
+        this.image = imageFactory.makeImage();*/
+
+        // initialisation de SPARSE
+        imageFactory = new RasterFlagFactory(900, 600,
+                Color.BLUE, Color.WHITE, Color.RED, RasterImageType.SPARSE);
         this.image = imageFactory.makeImage();
+
         render();
     }
 

@@ -1,11 +1,14 @@
 package viewer;
 
+import image.Image;
 import java.awt.*;
+import java.util.HashMap;
 import java.util.Map;
+import javafx.scene.paint.Color;
 
 import static util.Matrices.*;
 
-public class SparseRasterImage extends RasterImage {
+public class SparseRasterImage extends RasterImage implements Image {
 
     Map<Point,Color> nonWhitePixels;
 
@@ -28,33 +31,37 @@ public class SparseRasterImage extends RasterImage {
 
         for (int i = 0; i < this.width; i++) {
             for (int j = 0; j < this.height; j++) {
-                nonWhitePixels.put(new Point(j, i), pixels[j][j]);
+                nonWhitePixels.put(new Point(j, i), pixels[j][i]);
             }
         }
     }
 
     public void createRepresentation(){
-        this.pixels = new Color[height][width];
+        this.nonWhitePixels = new HashMap<>();
     }
 
     public void setPixelColor(Color color, int x, int y){
-
-
+        nonWhitePixels.put(new Point(x ,y), color);
     }
 
-    public void setPixelsColor(Color[][] pixels){
+    public void setPixelsColor(Color[][] pixels) {
 
+        for(int i = 0; i < getColumnCount(pixels); i++){
+            for(int j = 0; j < getRowCount(pixels); j++){
+                setPixelColor(pixels[j][i], j, i);
+            }
+        }
     }
 
     public void setPixelsColor(Color color){
-
-
+        for (int i = 0; i < width; i++){
+            for (int j = 0; j < height; j++){
+                nonWhitePixels.put(new Point(j, i), color);
+            }
+        }
     }
-
 
     public Color getPixelColor(int x, int y){
-        return nonWhitePixels.getOrDefault(new Point(x,y), Color.WHITE);
+        return nonWhitePixels.getOrDefault(new Point(y,x), Color.WHITE);
     }
-
-
 }

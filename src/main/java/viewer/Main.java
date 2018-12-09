@@ -19,7 +19,7 @@ public class Main extends Application
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Display.fxml"));
-        primaryStage.setTitle("Image display");
+        primaryStage.setTitle("Drapeau Français");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
