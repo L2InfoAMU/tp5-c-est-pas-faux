@@ -1,5 +1,6 @@
 package viewer;
 
+import java.awt.*;
 import image.Point;
 import image.Shape;
 import javafx.scene.paint.Color;
@@ -24,15 +25,15 @@ public class VectorImage extends RasterImage  {
     }
 
 
-    /*public Color getPixelColor(int x, int y) {
-        Point toSearch = new Point(x, y);
-        for (Shape shape : shapes){
-            if (shape.contains(toSearch)) {
-                return shapes.getFillColor();
+    public Color getPixelColor(int x, int y) {
+        Point point= new Point(x, y);
+        for (Shape shapes: shapes) {
+            if (shapes.contains(point)) {
+                return shapes.getColor();
             }
         }
         return Color.WHITE;
-    }*/
+    }
 
 
 
