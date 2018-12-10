@@ -41,6 +41,7 @@ public class Display implements Initializable {
         this.image = imageFactory.makeImage();*/
 
        imageFactory = new LogoLISFactory();
+       this.image = imageFactory.makeImage();
         render();
     }
 

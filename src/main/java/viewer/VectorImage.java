@@ -36,7 +36,4 @@ public class VectorImage extends RasterImage implements Image {
         }
         return Color.WHITE;
     }
-
-
-
 }
