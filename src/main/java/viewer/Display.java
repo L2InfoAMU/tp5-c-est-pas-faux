@@ -40,7 +40,7 @@ public class Display implements Initializable {
                 Color.BLUE, Color.WHITE, Color.RED, RasterImageType.SPARSE);
         this.image = imageFactory.makeImage();*/
 
-        imageFactory = new LogoLISFactory();
+       imageFactory = new LogoLISFactory();
         render();
     }
 
