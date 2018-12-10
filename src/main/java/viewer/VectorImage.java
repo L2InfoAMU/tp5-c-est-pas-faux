@@ -18,8 +18,9 @@ public class VectorImage extends RasterImage implements Image {
         setWidth(width);
         setHeight(height);
         createRepresentation();
-        for (Shape shape : shapes)
-            this.shapes.add(shape);
+        this.shapes=shapes;
+       // for (Shape shape : shapes)
+            //this.shapes.add(shape);
     }
 
     public void createRepresentation(){
