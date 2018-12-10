@@ -1,6 +1,6 @@
 package viewer;
 
-public abstract class RasterImage {
+public abstract class RasterImage  {
     public int width, height;
 
     public int getWidth() {

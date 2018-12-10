@@ -1,6 +1,8 @@
 package viewer;
 
 import java.awt.*;
+
+import image.Image;
 import image.Point;
 import image.Shape;
 import javafx.scene.paint.Color;
@@ -8,7 +10,7 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VectorImage extends RasterImage  {
+public class VectorImage extends RasterImage implements Image {
 
     public List<Shape> shapes;
 
