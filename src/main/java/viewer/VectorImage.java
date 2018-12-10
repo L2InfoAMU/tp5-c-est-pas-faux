@@ -12,7 +12,7 @@ public class VectorImage extends RasterImage  {
 
     public List<Shape> shapes;
 
-    public VectorImage(List<Shape> shapes, int width, int height){
+    public  VectorImage(List<Shape> shapes, int width, int height){
         this.width = width;
         this.height = height;
         createRepresentation();
@@ -33,4 +33,7 @@ public class VectorImage extends RasterImage  {
         }
         return Color.WHITE;
     }*/
+
+
+
 }
